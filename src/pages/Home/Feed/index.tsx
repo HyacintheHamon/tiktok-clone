@@ -1,26 +1,13 @@
 import React from 'react';
-import { Image, Animated, Easing } from 'react-native';
 
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import Video from 'react-native-video';
 import LinearGradient from 'react-native-linear-gradient';
-import Lottie from 'lottie-react-native';
+import Products from './Products';
 
-import musicFly from '../../../assets/lottie-animations/music-fly.json';
-
-import {
-  Container,
-  Details,
-  Actions,
-  User,
-  Tags,
-  Music,
-  MusicBox,
-  BoxAction,
-  TextAction,
-} from './styles';
+import {Container, Actions, BoxAction, TextAction} from './styles';
 
 interface Item {
   id: number;
@@ -33,124 +20,38 @@ interface Item {
 }
 
 interface Props {
-  play: boolean;
   item: Item;
 }
 
-const Feed: React.FC<Props> = ({ play, item }) => {
-  const spinValue = new Animated.Value(0);
-
-  Animated.loop(
-    Animated.timing(spinValue, {
-      toValue: 1,
-      duration: 10000,
-      easing: Easing.linear,
-      useNativeDriver: true,
-    }),
-  ).start();
-
-  const rotateProp = spinValue.interpolate({
-    inputRange: [0, 1],
-    outputRange: ['0deg', '360deg'],
-  });
-
+const Feed: React.FC<Props> = ({item}) => {
   return (
     <>
       <LinearGradient
-        colors={['rgba(0,0,0,.3)', 'transparent']}
+        colors={['rgba(0,0,0,.5)', 'transparent']}
         style={{
           position: 'absolute',
           left: 0,
           right: 0,
           top: 0,
-          height: '70%',
+          height: '20%',
         }}
       />
       <Container>
         <Video
-          source={{ uri: item.uri }}
+          source={item.source || {uri: item.uri}}
           rate={1.0}
           volume={1.0}
-          isMuted={false}
+          muted
           resizeMode="cover"
-          shouldPlay={true}
-          isLooping
+          repeat
           style={{
             width: '100%',
             height: '100%',
           }}
         />
       </Container>
-      <Details>
-        <User>{item.username}</User>
-        <Tags>{item.tags}</Tags>
-        <MusicBox>
-          <FontAwesome name="music" size={15} color="#f5f5f5" />
-          <Music>{item.music}</Music>
-        </MusicBox>
-      </Details>
-      <Actions>
-        <BoxAction>
-          <AntDesign
-            style={{ alignSelf: 'center' }}
-            name="heart"
-            size={35}
-            color="#fff"
-          />
-          <TextAction>{item.likes}</TextAction>
-        </BoxAction>
-        <BoxAction>
-          <FontAwesome
-            style={{ alignSelf: 'center' }}
-            name="commenting"
-            size={35}
-            color="#fff"
-          />
-          <TextAction>{item.comments}</TextAction>
-        </BoxAction>
-        <BoxAction>
-          <FontAwesome
-            style={{ alignSelf: 'center' }}
-            name="whatsapp"
-            size={35}
-            color="#06d755"
-          />
-          <TextAction>Share</TextAction>
-        </BoxAction>
-        <BoxAction>
-          <Animated.View
-            style={{
-              borderRadius: 50,
-              borderWidth: 12,
-              borderColor: '#292929',
-              transform: [
-                {
-                  rotate: play ? rotateProp : 0,
-                },
-              ],
-            }}
-          >
-            <Image
-              style={{
-                width: 35,
-                height: 35,
-                borderRadius: 25,
-              }}
-              source={{
-                uri: 'https://avatars2.githubusercontent.com/u/7548987',
-              }}
-            />
-          </Animated.View>
-
-          <Lottie
-            source={musicFly}
-            progress={play ? spinValue : 0}
-            style={{ width: 150, position: 'absolute', bottom: 0, right: 0 }}
-          />
-        </BoxAction>
-      </Actions>
       <LinearGradient
-        colors={['transparent', 'rgba(0,0,0,.4)']}
+        colors={['transparent', 'rgba(0,0,0,.5)']}
         style={{
           position: 'absolute',
           left: 0,
@@ -159,6 +60,45 @@ const Feed: React.FC<Props> = ({ play, item }) => {
           height: '50%',
         }}
       />
+      <Products />
+      <Actions>
+        <BoxAction>
+          <AntDesign
+            style={{alignSelf: 'center'}}
+            name="eye"
+            size={35}
+            color="#fff"
+          />
+          <TextAction>{item.views}</TextAction>
+        </BoxAction>
+        <BoxAction>
+          <AntDesign
+            style={{alignSelf: 'center'}}
+            name="heart"
+            size={35}
+            color="#fff"
+          />
+          <TextAction>{item.likes}</TextAction>
+        </BoxAction>
+        <BoxAction>
+          <FontAwesome
+            style={{alignSelf: 'center'}}
+            name="commenting"
+            size={35}
+            color="#fff"
+          />
+          <TextAction>{item.comments}</TextAction>
+        </BoxAction>
+        <BoxAction>
+          <FontAwesome
+            style={{alignSelf: 'center'}}
+            name="share"
+            size={35}
+            color="#ffffff"
+          />
+          <TextAction>Share</TextAction>
+        </BoxAction>
+      </Actions>
     </>
   );
 };

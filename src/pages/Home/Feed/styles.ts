@@ -49,7 +49,7 @@ export const Actions = styled.View`
   justify-content: center;
   align-items: center;
   padding: 20px 0;
-  bottom: 0;
+  bottom: 100px;
   right: 10px;
   z-index: 10;
 `;

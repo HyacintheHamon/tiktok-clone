@@ -3,7 +3,7 @@ import { View } from 'react-native';
 
 import ViewPager from '@react-native-community/viewpager';
 
-import server from '../../../server.json';
+import server from '../../../server.js';
 import Feed from './Feed';
 
 import { Container, Header, Text, Tab, Separator } from './styles';
@@ -11,15 +11,20 @@ import { Container, Header, Text, Tab, Separator } from './styles';
 const Home: React.FC = () => {
   const [tab, setTab] = useState(1);
   const [active, setActive] = useState(0);
+
   return (
     <Container>
       <Header>
         <Tab onPress={() => setTab(1)}>
-          <Text active={tab === 1}>Following</Text>
+          <Text active={tab === 1}>Past</Text>
         </Tab>
         <Separator>|</Separator>
         <Tab onPress={() => setTab(2)}>
-          <Text active={tab === 2}>For You</Text>
+          <Text active={tab === 2}>Live</Text>
+        </Tab>
+        <Separator>|</Separator>
+        <Tab onPress={() => setTab(3)}>
+          <Text active={tab === 3}>Upcoming</Text>
         </Tab>
       </Header>
       <ViewPager
@@ -32,7 +37,10 @@ const Home: React.FC = () => {
       >
         {server.feed.map(item => (
           <View key={item.id}>
-            <Feed item={item} play={Number(item.id) === active} />
+            <Feed
+              item={item}
+              play={Number(item.id) === active}
+            />
           </View>
         ))}
       </ViewPager>

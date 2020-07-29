@@ -1,7 +1,9 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
 
-import { MaterialIcons, AntDesign, FontAwesome } from '@expo/vector-icons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import avatar from '../../assets/avatar.png';
 

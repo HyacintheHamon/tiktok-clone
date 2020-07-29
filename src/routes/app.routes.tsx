@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { StatusBar, Platform } from 'react-native';
 
-import {
-  MaterialCommunityIcons,
-  AntDesign,
-  FontAwesome,
-} from '@expo/vector-icons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 

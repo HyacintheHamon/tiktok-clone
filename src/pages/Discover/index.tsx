@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
-import { Ionicons, AntDesign } from '@expo/vector-icons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import { Container, Search, Header, Input } from './styles';
 

@@ -1,9 +1,11 @@
 import React from 'react';
 import { Image, Animated, Easing } from 'react-native';
 
-import { FontAwesome, AntDesign } from '@expo/vector-icons';
-import { Video } from 'expo-av';
-import { LinearGradient } from 'expo-linear-gradient';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+
+import Video from 'react-native-video';
+import LinearGradient from 'react-native-linear-gradient';
 import Lottie from 'lottie-react-native';
 
 import musicFly from '../../../assets/lottie-animations/music-fly.json';
@@ -135,7 +137,7 @@ const Feed: React.FC<Props> = ({ play, item }) => {
                 borderRadius: 25,
               }}
               source={{
-                uri: 'https://avatars3.githubusercontent.com/u/45601574',
+                uri: 'https://avatars2.githubusercontent.com/u/7548987',
               }}
             />
           </Animated.View>

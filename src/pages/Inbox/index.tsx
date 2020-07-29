@@ -1,6 +1,8 @@
 import React from 'react';
 
-import { Feather, MaterialIcons } from '@expo/vector-icons';
+import Feather from 'react-native-vector-icons/Feather';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+
 
 import { Container, Title, Header } from './styles';
 

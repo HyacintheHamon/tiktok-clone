@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, StatusBar } from 'react-native';
 
-import {
-  FontAwesome,
-  MaterialCommunityIcons,
-  AntDesign,
-} from '@expo/vector-icons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+
 import { useNavigation } from '@react-navigation/native';
-import { Camera } from 'expo-camera';
+import Camera from 'react-native-camera';
 
 import {
   Container,

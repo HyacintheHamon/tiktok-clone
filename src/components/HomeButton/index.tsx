@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { FontAwesome5 } from '@expo/vector-icons';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import { Container, Button } from './styles';
 
@@ -12,7 +12,7 @@ const HomeButton: React.FC<Props> = ({ home }) => {
   return (
     <Container home={home}>
       <Button>
-        <FontAwesome5 name="plus" size={18} color={home ? '#000' : '#fff'} />
+        <Icon name="plus" size={18} color={home ? '#000' : '#fff'} />
       </Button>
     </Container>
   );
